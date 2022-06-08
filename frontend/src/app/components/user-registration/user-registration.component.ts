@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'user-registration-form',
@@ -8,9 +8,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UserRegistrationComponent implements OnInit {
 
-  userRegistrationForm!: FormGroup;
+  userRegistrationForm!: UntypedFormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder) {
   }
 
   ngOnInit(): void {
