@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faAt, faKey, faUserCheck } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'login-form',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginForm!: FormGroup;
+  icons: any = {
+    loginIcon: faUserCheck,
+    newUserIcon: faUserPlus,
+    emailIcon: faAt,
+    passwordIcon: faKey,
+  };
+
+  constructor(private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(320)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(255)]]
+    });
+  }
+
+  handleSubmit(): void {
+    console.log(this.loginForm);
   }
 
 }

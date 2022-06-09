@@ -1,11 +1,68 @@
 <div class="card">
-    <div class="card-header">User Registration</div>
+    <div class="card-header bg-primary text-light">
+        <h4 class="display-4"><fa-icon [icon]="faIcons.newUserIcon"></fa-icon> Register</h4>
+    </div>
     <div class="card-body">
-        <form>
+        <form [formGroup]="userRegistrationForm" (ngSubmit)="handleSubmit()">
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" formControlName="email">
+                <label for="full-name" class="display-6">Full Name</label>
+                <input type="text" class="form-control" id="full-name" formControlName="fullName">
+                <em class="small text-danger" 
+                    *ngIf="userRegistrationForm.controls['fullName'].dirty && userRegistrationForm.controls['fullName'].invalid">
+                    Invalid Name
+                </em>
             </div>
+            <div class="form-group">
+                <label for="email" class="display-6">Email</label>
+                <input type="email" class="form-control display-6" id="email" formControlName="email">
+                <em class="small text-danger" 
+                    *ngIf="userRegistrationForm.controls['email'].dirty && userRegistrationForm.controls['email'].invalid">
+                    Invalid Email
+                </em>
+            </div>
+            <div formGroupName="phone" class="row">
+                <label class="display-6">Phone Number</label>
+                <div class="col-lg-4 col-md-12">
+                    <label for="country-code"><h6>Country Code</h6></label>
+                    <input list="country-codes" formControlName="countryCode" id="country-code" class="form-control">
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <label for="phone-number"><h6>Phone Number</h6></label>
+                    <input type="text" formControlName="phoneNumber" id="phone-number" class="form-control">
+                </div>
+                <em class="small text-danger"
+                    *ngIf="userRegistrationForm.controls['phone'].dirty && userRegistrationForm.controls['phone'].invalid">
+                    Invalid phone number
+                </em>
+            </div>
+            <div class="form-group">
+                <label for="password" class="display-6">Password</label>
+                <input type="password" formControlName="password1" id="password-1" class="form-control">
+                <em class="small text-danger"
+                    *ngIf="userRegistrationForm.controls['password1'].dirty && userRegistrationForm.controls['password1'].invalid">
+                    Invalid password
+                </em>
+            </div>
+            <div class="form-group">
+                <label for="password" class="display-6">Confirm Password</label>
+                <input type="password" formControlName="password2" id="password-2" class="form-control">
+                <em class="small text-danger"
+                    *ngIf="userRegistrationForm.controls['password2'].dirty && userRegistrationForm.controls['password2'].invalid">
+                    Invalid password
+                </em>
+            </div>
+            <div class="form-group">
+                <button 
+                    type="submit" class="btn-lg btn-primary my-2"
+                    [disabled]="userRegistrationForm.invalid">
+                    <h6 class="display-6">Register</h6>
+                </button>
+                <button type="reset" class="btn-lg btn-danger mx-2 my-2"><h6 class="display-6">Reset</h6></button>
+            </div>
+            <datalist id="country-codes">
+                <option value="+1">USA</option>
+                <option value="+251">Ethiopia</option>
+            </datalist>
         </form>
     </div>
     <div class="card-footer"></div>
