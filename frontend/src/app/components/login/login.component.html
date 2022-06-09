@@ -1,37 +1,35 @@
-<div class="card">
+<div class="card border-5">
     <div class="card-header bg-primary text-light">
         <h4 class="display-4"><fa-icon [icon]="icons.loginIcon"></fa-icon> Login</h4>
     </div>
     <div class="card-body">
         <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
-            <div class="input-group mb-3">
-                <span class="input-group-text"><fa-icon [icon]="icons.emailIcon"></fa-icon></span>
+            <div class="input-group mt-3">
+                <span class="input-group-text"><fa-icon class="fa-lg" [icon]="icons.emailIcon"></fa-icon></span>
                 <input type="email" formControlName="email" id="email" class="form-control" placeholder="Email">
-                <em  class="d-block text-danger small" *ngIf="loginForm.controls['email'].dirty && loginForm.controls['email'].invalid">
-                    Invalid email
-                </em>
             </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text"><fa-icon [icon]="icons.passwordIcon"></fa-icon></span>
+            <em class="d-block text-danger small" *ngIf="loginForm.controls['email'].dirty && loginForm.controls['email'].invalid">
+                Invalid email
+            </em>
+            <div class="input-group mt-3">
+                <span class="input-group-text"><fa-icon class="fa-lg" [icon]="icons.passwordIcon"></fa-icon></span>
                 <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
-                <em class="d-block text-danger small" *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].invalid">
-                    Invalid password
-                </em>
             </div>
+            <em class="d-block text-danger small"
+                *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].invalid">
+                Invalid password
+            </em>
             <div class="form-group">
-                <button type="submit" class="btn-lg btn-primary my-2"
+                <button type="submit" class="btn-lg btn-primary my-2 me-2"
                     [disabled]="loginForm.invalid">
                     <h6 class="display-6">Sign In</h6>
                 </button>
                 <a [routerLink]="['/register']">
-                    <button class="btn-lg btn-secondary mx-2">
+                    <button class="btn-lg btn-secondary my-2">
                         <h6 class="display-6"><fa-icon [icon]="icons.newUserIcon"></fa-icon> Create a new account</h6>
                     </button>
                 </a>
             </div>
         </form>
-    </div>
-    <div class="card-footer">
-        
     </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faUserPlus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'user-registration-form',
@@ -12,6 +12,7 @@ export class UserRegistrationComponent implements OnInit {
   userRegistrationForm!: FormGroup;
   faIcons: any = {
     newUserIcon: faUserPlus,
+    plusIcon: faPlus,
   };
 
   constructor(private formBuilder: UntypedFormBuilder) {
@@ -32,7 +33,7 @@ export class UserRegistrationComponent implements OnInit {
       phone: this.formBuilder.group({
         countryCode: ['', [
           Validators.required, 
-          Validators.pattern(/\+[1-9]\d{0,5}/)]
+          Validators.pattern(/[1-9]\d{0,5}/)]
         ],
         phoneNumber: ['', [
           Validators.required, 
